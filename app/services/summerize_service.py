@@ -1,6 +1,13 @@
 from google import genai
 import json
 from app.config.config import GOOGLE_API_KEY
+from app.logger import logger  # <-- use your existing logger
+
+# Initialize Google AI client
+if not GOOGLE_API_KEY:
+    logger.error("GOOGLE_API_KEY is missing! Please set it in environment variables.")
+    raise ValueError("Google API key is missing!")
+
 
 client = genai.Client(api_key=GOOGLE_API_KEY) # API key should be set as env variable
 
