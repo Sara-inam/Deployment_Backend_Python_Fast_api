@@ -1,7 +1,8 @@
 from google import genai
 import json
+from app.config.config import GOOGLE_API_KEY
 
-client = genai.Client()  # API key should be set as env variable
+client = genai.Client(api_key=GOOGLE_API_KEY) # API key should be set as env variable
 
 def summarize_text_and_category(text: str) -> dict:
     prompt_text = f"""
